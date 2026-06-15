@@ -2,12 +2,35 @@
 
 A [pi](https://github.com/earendil-works/pi) extension that turns a directory — or a shared
 HuggingFace Space — into a **nested, agent-collaborative experiment log** backed by HuggingFace
-Jobs.
-
-It's designed as a collaboration substrate for ML research efforts (e.g. the
+Jobs. It's a collaboration substrate for ML research efforts (e.g. the
 [Fast Gemma Challenge](https://huggingface.co/gemma-challenge)): a researcher's agent can land,
-read the tree cheaply, see what's running right now, and contribute — by running an unstarted
-experiment, branching from a finished one, or adding ideas at any level.
+read the tree cheaply, see what's running right now, and contribute.
+
+## Install
+
+Requires [pi](https://github.com/earendil-works/pi), the `hf` CLI, and Node. Clone the repo and
+install dependencies:
+
+```bash
+git clone https://github.com/abidlabs/pi-experiment-log-extension
+cd pi-experiment-log-extension
+npm install
+```
+
+Then either run it ad-hoc with the `-e` flag, or install it into pi:
+
+```bash
+# Ad-hoc (always picks up local edits) — run from anywhere with an absolute path
+pi -e ./src/index.ts --exp-local ./my-log --exp-goal "Optimize tok/s of Gemma on a10g-small"
+
+# Install project-locally (auto-loads when you run pi in that project)
+pi install /path/to/pi-experiment-log-extension -l
+
+# Or install globally (loads in every pi session)
+pi install /path/to/pi-experiment-log-extension
+```
+
+To uninstall: `pi remove /path/to/pi-experiment-log-extension` (add `-l` for the project-local one).
 
 ## What it does
 
@@ -30,30 +53,6 @@ experiment, branching from a finished one, or adding ideas at any level.
   experimentation (baseline → small probes → aggregate, instead of one-shotting).
 - **Local or Space backend, chosen at startup.** In Space mode, each change is `git pull
   --rebase` → commit → push, so multiple people/agents collaborate on one log.
-
-## Install
-
-Requires [pi](https://github.com/earendil-works/pi), the `hf` CLI, and Node. Install the
-extension's dependencies first:
-
-```bash
-git clone https://github.com/abidlabs/pi-experiment-log-extension
-cd pi-experiment-log-extension
-npm install
-```
-
-Then either run it ad-hoc with the `-e` flag, or install it into pi:
-
-```bash
-# Ad-hoc (always picks up local edits)
-pi -e ./src/index.ts --exp-local ./my-log --exp-goal "Optimize tok/s of Gemma on a10g-small"
-
-# Install project-locally (auto-loads when you run pi in that project)
-pi install /path/to/pi-experiment-log-extension -l
-
-# Or install globally (loads in every pi session)
-pi install /path/to/pi-experiment-log-extension
-```
 
 ## Usage
 
