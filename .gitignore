@@ -1,0 +1,9 @@
+node_modules/
+
+# Local experiment-log working data / test output
+experiment-log-data/
+demo-log/
+*.log
+
+# OS / editor cruft
+.DS_Store

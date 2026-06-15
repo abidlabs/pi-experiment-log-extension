@@ -1,0 +1,21 @@
+{
+  "name": "pi-extension-experiment-log",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Nested, agent-collaborative experiment log backed by HuggingFace Jobs",
+  "scripts": {
+    "clean": "echo 'nothing to clean'",
+    "build": "echo 'nothing to build'",
+    "check": "echo 'nothing to check'"
+  },
+  "pi": {
+    "extensions": [
+      "./src/index.ts"
+    ]
+  },
+  "dependencies": {
+    "gray-matter": "4.0.3",
+    "marked": "12.0.2"
+  }
+}
